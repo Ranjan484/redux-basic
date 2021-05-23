@@ -18,12 +18,19 @@ const init = {
 
 // reducer
 function reducer(state, action) {
-  console.log({ state, action });
+  console.log(state, action);
+  if (action.type === "DECREASE") {
+    return { count: state.count - 1 };
+  }
   return state;
 }
 
 const store = createStore(reducer, init);
-console.log(store.getState());
+store.dispatch({ type: "DECREASE" });
+store.dispatch({ type: "DECREASE" });
+store.dispatch({ type: "DECREASE" });
+store.dispatch({ type: "DECREASE" });
+store.dispatch({ type: "DECREASE" });
 
 function App() {
   // cart setup
