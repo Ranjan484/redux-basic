@@ -3,29 +3,35 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import CartContainer from "./components/CartContainer";
 // items
-
+import cartItems from "./cart-items";
 // redux stuff
 
-import { createStore } from "redux";
-import reducer from "./reducer";
-// react-redux - Provider - wraps app , connect - used in components
-import { Provider } from "react-redux";
-// initial store
+// store - stores data, think of state
+// reducer - function that used to update store
 
-// store
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import { createStore } from "redux";
+
+//initial store
+const init = {
+  count: 0,
+};
+
+// reducer
+function reducer(state, action) {
+  console.log({ state, action });
+  return state;
+}
+
+const store = createStore(reducer, init);
 
 function App() {
   // cart setup
 
   return (
-    <Provider store={store}>
+    <main>
       <Navbar />
-      <CartContainer />
-    </Provider>
+      <CartContainer cart={cartItems} />
+    </main>
   );
 }
 
