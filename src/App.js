@@ -17,7 +17,7 @@ import reducer from "./reducer";
 const init = {
   cart: cartItems,
   total: 500,
-  amount: 5,
+  amount: 0,
 };
 
 const store = createStore(reducer, init);

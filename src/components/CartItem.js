@@ -32,7 +32,7 @@ const CartItem = ({
         {/* amount */}
         <p className="amount">{amount}</p>
         {/* decrease amount */}
-        <button className="amount-btn">
+        <button className="amount-btn" onClick={() => decrease()}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
@@ -44,7 +44,7 @@ const CartItem = ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   // console.log(ownProps);
-  const { id } = ownProps;
+  const { id, amount } = ownProps;
   return {
     remove: () =>
       dispatch({
@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     decrease: () =>
       dispatch({
         type: DECREASE,
-        payload: { id },
+        payload: { id, amount },
       }),
   };
 };
