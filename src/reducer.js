@@ -5,7 +5,14 @@ function reducer(state, action) {
     return { ...state, cart: [] };
   }
   if (action.type === INCREASE) {
-    console.log("increase");
+    const plus = state.cart.map((item) => {
+      // console.log(item);
+      if (item.id === action.payload.id) {
+        item = { ...item, amount: item.amount + 1 };
+      }
+      return item;
+    });
+    return { ...state, cart: plus };
   }
   if (action.type === DECREASE) {
     console.log("decrease");
